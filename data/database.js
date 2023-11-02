@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 export const connectDB = () => {
    mongoose
-      .connect('mongodb://127.0.0.1:27017', { dbName: 'netflix2' })
-      .then(() => console.log('Database Connected'))
+      .connect(process.env.MONGO_URI, { dbName: 'netflix2' })
+      .then((c) => console.log(`Database Connected with ${c.connection.host}`))
       .catch((error) => {
          console.log(error);
       });
